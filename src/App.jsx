@@ -1,20 +1,18 @@
 import "./App.css";
-import PostList from "./PostList";
-import { useState, useEffect } from "react";
+import Feed from "./Feed";
+import PostPage from "./PostPage";
+import { useState } from "react";
 
 function App() {
-  const [posts, setPosts] = useState([]);
-
-  // Fetches Posts on Initial Render
-  useEffect(() => {
-    fetch("https://sf-collective-api.herokuapp.com/posts?_limit=10")
-      .then((response) => response.json())
-      .then((data) => setPosts(data));
-  }, []);
+  const [postId, setPostId] = useState(null);
 
   return (
     <div className="App">
-      <PostList posts={posts}></PostList>
+      {postId === null ? (
+        <Feed setPostId={setPostId}></Feed>
+      ) : (
+        <PostPage postId={postId} setPostId={setPostId}></PostPage>
+      )}
     </div>
   );
 }
