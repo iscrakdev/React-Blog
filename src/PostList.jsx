@@ -4,7 +4,7 @@ const PostList = ({ posts }) => {
   return (
     <div className="post-list">
         {posts.map((post) => (
-          <PostItem post={post}></PostItem>
+          <PostItem key={post.id} post={post}></PostItem>
         ))}
     </div>
   );
