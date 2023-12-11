@@ -1,5 +1,8 @@
+import { useParams } from "react-router";
+
 const PostPage = ({ postId, setPostId }) => {
-  return <div className="post-page">Hello World this is post {postId}</div>;
+  const { id } = useParams();
+  return <div className="post-page">Hello World this is post {id}</div>;
 };
 
 export default PostPage;
