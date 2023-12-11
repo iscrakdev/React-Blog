@@ -3,7 +3,7 @@ const PostItem = ({ post }) => {
   return (
     <div className="post-item">
       <div className="row-1">
-        <h2 className = "inline-obj">{post.title.slice(0,80)}</h2>
+        <h2 className = "inline-obj">{post.title.slice(0,80)}...</h2>
         <p onClick={() => console.log("delete")} className = "inline-obj">
           <span class="material-symbols-outlined delete-button">delete</span>
         </p>
