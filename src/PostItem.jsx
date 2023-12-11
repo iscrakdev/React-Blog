@@ -1,4 +1,4 @@
-const PostItem = () => {
+const PostItem = ({ post }) => {
   return (
     <div className="post-item">
       <div className="row-1">
@@ -20,4 +20,4 @@ const PostItem = () => {
   );
 };
 
-export default PostItem
+export default PostItem;
