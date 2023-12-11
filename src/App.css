@@ -2,6 +2,53 @@
   text-align: center;
 }
 
+.row-1{
+  text-align: left;
+}
+
 .material-symbols-outlined {
   font-variation-settings: "FILL" 0, "wght" 400, "GRAD" 0, "opsz" 24;
+}
+
+.inline-obj{
+  display: inline;
+}
+
+.row-2, .row-3, .row-4{
+  text-align: left;
+}
+.post-list{
+  width: 75%;
+  margin-left: 12.5%;
+}
+
+.add-pad{
+  margin-right: 25px;
+}
+
+.delete-button{
+  float:inline-end;
+  color: red;
+  border: 1px solid rgb(0,0,0,0);
+  border-radius: 15px;
+  padding: 5px;
+}
+.delete-button:hover{
+  background-color: rgb(238, 103, 103);
+  color: white;
+}
+
+.post-item{
+  margin-bottom: 25px;
+  border: 1px solid grey;
+  padding: 15px;
+  border-radius: 10px;
+}
+
+.readmore{
+  margin-right: 50%;
+}
+
+.endline{
+  float: inline-end;
 }
