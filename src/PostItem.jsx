@@ -17,8 +17,8 @@ const PostItem = ({ post }) => {
       <div className="row-4">
         <p onClick={() => console.log("read more")} className = "inline-obj readmore">Read More...</p>
         <div className = "inline-obj endline">
-        <p className = "inline-obj add-pad"><span class="material-symbols-outlined">thumb_up</span>Upvotes: #</p>
-        <p className = "inline-obj"><span class="material-symbols-outlined">thumb_down</span>Downvotes: #</p>
+        <p className = "inline-obj add-pad"><span class="material-symbols-outlined like">thumb_up</span>#</p>
+        <p className = "inline-obj"><span class="material-symbols-outlined dislike">thumb_down</span>#</p>
       </div>
       </div>
     </div>

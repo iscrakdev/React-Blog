@@ -8,6 +8,7 @@
 
 .material-symbols-outlined {
   font-variation-settings: "FILL" 0, "wght" 400, "GRAD" 0, "opsz" 24;
+  font-size: 15pt;
 }
 
 .inline-obj{
@@ -51,4 +52,20 @@
 
 .endline{
   float: inline-end;
+  transform: translate(0, -6px);
+}
+.like, .dislike{
+  transform: translate(0, 4px);
+  font-size:  14pt;
+  color: grey;
+  padding: 4px;
+}
+
+.like:hover{
+  background-color: rgb(118, 180, 118);
+  color: white;
+}
+.dislike:hover{
+  background-color: rgb(238, 103, 103);
+  color: white;
 }
