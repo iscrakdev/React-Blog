@@ -1,7 +1,7 @@
 import PostList from "./PostList";
 import { useState, useEffect } from "react";
 
-function Feed({ setPostId }) {
+function Feed() {
   const [posts, setPosts] = useState([]);
 
   // Fetches Posts on Initial Render
@@ -13,7 +13,7 @@ function Feed({ setPostId }) {
 
   return (
     <div className="Feed">
-      <PostList posts={posts} setPostId={setPostId}></PostList>
+      <PostList posts={posts}></PostList>
     </div>
   );
 }

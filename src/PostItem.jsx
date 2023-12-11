@@ -1,7 +1,6 @@
 import { Link } from "react-router-dom";
 
-const PostItem = ({ post, setPostId }) => {
-  console.log(post);
+const PostItem = ({ post }) => {
   return (
     <div className="post-item">
       <div className="row-1">
@@ -20,11 +19,7 @@ const PostItem = ({ post, setPostId }) => {
         <p>{post.content.slice(0, 250)}</p>
       </div>
       <div className="row-4">
-        <Link
-          to={`/post/${post.id}`}
-          onClick={() => setPostId(post.id)}
-          className="inline-obj readmore"
-        >
+        <Link to={`/post/${post.id}`} className="inline-obj readmore">
           Read More...
         </Link>
         <div className="inline-obj endline">
