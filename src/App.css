@@ -46,13 +46,16 @@
 
 .post-item{
   margin-bottom: 25px;
-  border: 1px solid grey;
+  border: 1px solid rgb(185, 185, 185, 0.25);
   padding: 15px;
   border-radius: 10px;
+  box-shadow: 2px 2px 4px rgb(0,0,0,0.1);
 }
 
 .readmore{
   margin-right: 50%;
+  text-decoration: none;
+  color: rgb(142, 172, 172);
 }
 
 .endline{
@@ -73,4 +76,14 @@
 .dislike:hover{
   background-color: rgb(238, 103, 103);
   color: white;
+}
+.post-img{
+  width: 25px;
+  border-radius: 15px;
+  display: inline;
+  margin-right: 15px;
+  transform: translate(0, 3px);
+}
+.post-author{
+  display: inline;
 }
