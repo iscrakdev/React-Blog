@@ -24,6 +24,19 @@ const PostItem = ({ post, setRefresh }) => {
     }
   };
 
+  if (post.title === ""){
+    fetch(
+      `https://sf-collective-api.herokuapp.com/comments/?post_id=${post.id}`
+    )
+      .then((response) => response.json())
+      .then(deleteComments);
+    fetch(`https://sf-collective-api.herokuapp.com/posts/${post.id}`, {
+      method: "DELETE",
+    }).then(() => {
+      setRefresh(true);
+    });
+  }
+
   const getCurrentVotes = () => (post.votes ? post.votes : 0);
 
   const changeVotes = (data) => {
