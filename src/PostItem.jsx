@@ -24,6 +24,20 @@ const PostItem = ({ post, setRefresh }) => {
     }
   };
 
+  const getCurrentVotes = () => (post.votes ? post.votes : 0);
+
+  const changeVotes = (data) => {
+    fetch(`https://sf-collective-api.herokuapp.com/posts/${post.id}`, {
+      method: "PATCH",
+      headers: {
+        "Content-Type": "application/json",
+      },
+      body: JSON.stringify(data),
+    }).then(() => {
+      setRefresh(true);
+    });
+  };
+
   return (
     <div className="post-item">
       <div className="row-1">
@@ -46,8 +60,21 @@ const PostItem = ({ post, setRefresh }) => {
         </Link>
         <div className="inline-obj endline">
           <p className="inline-obj">
-            <span className="material-symbols-outlined like">thumb_up</span>###
-            <span className="material-symbols-outlined dislike">
+            <span
+              className="material-symbols-outlined like"
+              onClick={() => {
+                changeVotes({ votes: getCurrentVotes() + 1 });
+              }}
+            >
+              thumb_up
+            </span>
+            {getCurrentVotes()}
+            <span
+              className="material-symbols-outlined dislike"
+              onClick={() => {
+                changeVotes({ votes: getCurrentVotes() - 1 });
+              }}
+            >
               thumb_down
             </span>
           </p>
