@@ -1,8 +1,6 @@
 import { Link } from "react-router-dom";
 
 const PostItem = ({ post, setRefresh }) => {
-
-
   const deleteComments = (comments) => {
     for (let comment of comments) {
       fetch(`https://sf-collective-api.herokuapp.com/comments/${comment.id}`, {
@@ -12,24 +10,25 @@ const PostItem = ({ post, setRefresh }) => {
   };
 
   const deletePost = () => {
-    fetch(
-      `https://sf-collective-api.herokuapp.com/comments/?post_id=${post.id}`
-    )
-      .then((response) => response.json())
-      .then(deleteComments);
-    fetch(`https://sf-collective-api.herokuapp.com/posts/${post.id}`, {
-      method: "DELETE",
-    }).then(() => {setRefresh(true)});
+    if (window.confirm("Are you sure you want to delete " + post.title)) {
+      fetch(
+        `https://sf-collective-api.herokuapp.com/comments/?post_id=${post.id}`
+      )
+        .then((response) => response.json())
+        .then(deleteComments);
+      fetch(`https://sf-collective-api.herokuapp.com/posts/${post.id}`, {
+        method: "DELETE",
+      }).then(() => {
+        setRefresh(true);
+      });
+    }
   };
 
   return (
     <div className="post-item">
       <div className="row-1">
-        <h2 className="inline-obj">{post.title.slice(0, 80)}...</h2>
-        <p
-          onClick={() => deletePost()}
-          className="inline-obj"
-        >
+        <h2 className="inline-obj post-title">{post.title.slice(0, 80)}...</h2>
+        <p onClick={() => deletePost()} className="inline-obj">
           <span className="material-symbols-outlined delete-button">
             delete
           </span>
@@ -47,7 +46,8 @@ const PostItem = ({ post, setRefresh }) => {
         </Link>
         <div className="inline-obj endline">
           <p className="inline-obj">
-            <span className="material-symbols-outlined like">thumb_up</span>###<span className="material-symbols-outlined dislike">
+            <span className="material-symbols-outlined like">thumb_up</span>###
+            <span className="material-symbols-outlined dislike">
               thumb_down
             </span>
           </p>

@@ -40,16 +40,16 @@ const PostPage = () => {
   return (
     <div className="post-page">
       <div className="post">
-        <h2 className="row-1">{post.title}</h2>
+        <h2 className="row-1 post-title">{post.title}</h2>
         <div className="row-2">
-          <p className="postAuthor">
+          <p className="post-author">
             <span>
               <img src={post.img_url} className="post-img"></img>
             </span>
             {post.author}
           </p>
         </div>
-        <p className="row-3">{post.content}</p>
+        <p className="row-3 post-content">{post.content}</p>
         <p className="row-4"></p>
       </div>
       <hr></hr>
