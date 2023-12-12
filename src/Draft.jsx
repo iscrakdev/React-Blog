@@ -63,10 +63,14 @@ const Draft = () => {
             if (content === "") {
               window.alert("please provide some content for your post");
               return null;
+            } else {
+              post.content = content;
             }
             if (title === "") {
               window.alert("please provide a title for your post");
               return null;
+            } else {
+              post.title = title;
             }
             if (img_url !== "") {
               post.img_url = img_url;
@@ -76,7 +80,6 @@ const Draft = () => {
             } else {
               post.author = author;
             }
-            post.content = content;
             createPost(post);
           }}
         >

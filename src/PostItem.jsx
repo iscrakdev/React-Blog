@@ -1,6 +1,10 @@
 import { Link } from "react-router-dom";
 
 const PostItem = ({ post, setRefresh }) => {
+  const [liked, setLiked] = useState(false);
+  const [dislike, setDisliked] = useState(false);
+
+
   const deleteComments = (comments) => {
     for (let comment of comments) {
       fetch(`https://sf-collective-api.herokuapp.com/comments/${comment.id}`, {
@@ -24,7 +28,7 @@ const PostItem = ({ post, setRefresh }) => {
     }
   };
 
-  if (post.title === ""){
+ /*  if (post.title === ""){
     fetch(
       `https://sf-collective-api.herokuapp.com/comments/?post_id=${post.id}`
     )
@@ -35,7 +39,7 @@ const PostItem = ({ post, setRefresh }) => {
     }).then(() => {
       setRefresh(true);
     });
-  }
+  } */
 
   const getCurrentVotes = () => (post.votes ? post.votes : 0);
 
@@ -77,6 +81,7 @@ const PostItem = ({ post, setRefresh }) => {
               className="material-symbols-outlined like"
               onClick={() => {
                 changeVotes({ votes: getCurrentVotes() + 1 });
+                setLiked(true);
               }}
             >
               thumb_up
