@@ -76,6 +76,7 @@ const Draft = () => {
             } else {
               post.author = author;
             }
+            post.content = content;
             createPost(post);
           }}
         >
