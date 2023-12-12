@@ -92,7 +92,7 @@ const PostPage = () => {
           </p>
         </div>
         <p className="row-3 post-content">{post.content}</p>
-        <p className="row-4"><span
+        <p className="row-4 post-page-likeDislike"><span
               className="material-symbols-outlined like"
               onClick={() => {
                 changeVotes({ votes: getCurrentVotes() + 1 });

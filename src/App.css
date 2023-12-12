@@ -79,11 +79,20 @@ span:hover{
   font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
   margin-left: 15px;
 }
+.post-page-likeDislike{
+  text-align: right;
+  transform: translate(0, -5px);
+}
 
 /* navigation */
 .navContainer{
   display:flex;
   justify-content: space-evenly;
+  margin-bottom: 15px;
+}
+.nav-obj{
+  text-decoration: none;
+
 }
 
 /* like / dislike */
