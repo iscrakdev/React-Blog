@@ -6,7 +6,7 @@ function Feed() {
 
   // Fetches Posts on Initial Render
   useEffect(() => {
-    fetch("https://sf-collective-api.herokuapp.com/posts?_limit=10")
+    fetch("https://sf-collective-api.herokuapp.com/posts?_limit=10&_order=desc&_sort=id")
       .then((response) => response.json())
       .then((data) => setPosts(data));
   }, []);

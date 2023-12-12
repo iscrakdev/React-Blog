@@ -28,10 +28,6 @@
   margin-left: 12.5%;
 }
 
-.add-pad{
-  margin-right: 25px;
-}
-
 .delete-button{
   float:inline-end;
   color: rgb(201, 91, 91);
@@ -66,6 +62,13 @@
   font-size:  14pt;
   color: grey;
   padding: 4px;
+  border-radius: 5px;
+}
+.like{
+  margin-right: 5px;
+}
+.dislike{
+  margin-left: 5px;
 }
 .like:hover{
   background-color: rgb(118, 180, 118);

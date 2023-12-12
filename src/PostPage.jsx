@@ -7,6 +7,7 @@ const PostPage = () => {
   const { id } = useParams();
   const [post, setPost] = useState({});
   const [comments, setComments] = useState([]);
+  const [refresh, setRefresh] = useState(true);
 
   useEffect(() => {
     fetch(`https://sf-collective-api.herokuapp.com/posts/${id}`)
@@ -22,7 +23,9 @@ const PostPage = () => {
     fetch(`https://sf-collective-api.herokuapp.com/comments?post_id=${id}`)
       .then((response) => response.json())
       .then((data) => setComments(data));
-  }, [id]);
+
+    setRefresh(false);
+  }, [id, refresh]);
 
   const createComment = (data) => {
     fetch("https://sf-collective-api.herokuapp.com/comments", {
@@ -31,13 +34,7 @@ const PostPage = () => {
         "Content-Type": "application/json",
       },
       body: JSON.stringify(data),
-    })
-      .then((response) => response.json())
-      .then((data) =>
-        fetch(`https://sf-collective-api.herokuapp.com/comments?post_id=${id}`)
-          .then((response) => response.json())
-          .then((data) => setComments(data))
-      );
+    }).then(() => setRefresh(true));
   };
 
   return (
@@ -58,10 +55,16 @@ const PostPage = () => {
       <hr></hr>
       <div className="comments-section">
         {comments.map((comment) => {
-          return <Comment key={comment.id} comment={comment} />;
+          return (
+            <Comment
+              key={comment.id}
+              comment={comment}
+              setRefresh={setRefresh}
+            />
+          );
         })}
       </div>
-      <NewComment id={id} createComment={createComment}/>
+      <NewComment id={id} createComment={createComment} />
     </div>
   );
 };
