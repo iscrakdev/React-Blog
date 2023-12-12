@@ -1,7 +1,7 @@
 import { useState, useEffect } from "react";
 import { useParams } from "react-router";
 import Comment from "./Comment";
-import Navigation from "./Navigation";
+import NewComment from "./NewComment";
 
 const PostPage = () => {
   const { id } = useParams();
@@ -11,17 +11,37 @@ const PostPage = () => {
   useEffect(() => {
     fetch(`https://sf-collective-api.herokuapp.com/posts/${id}`)
       .then((response) => response.json())
-      .then((data) => setPost(data));
+      .then((data) => {
+        if (!data.img_url) {
+          data.img_url =
+            "https://cdn4.iconfinder.com/data/icons/political-elections/50/48-512.png";
+        }
+        setPost(data);
+      });
+
     fetch(`https://sf-collective-api.herokuapp.com/comments?post_id=${id}`)
       .then((response) => response.json())
       .then((data) => setComments(data));
   }, [id]);
-  if (post.img_url === ""){
-    post.img_url = "https://cdn4.iconfinder.com/data/icons/political-elections/50/48-512.png"
-  }
+
+  const createComment = (data) => {
+    fetch("https://sf-collective-api.herokuapp.com/comments", {
+      method: "POST",
+      headers: {
+        "Content-Type": "application/json",
+      },
+      body: JSON.stringify(data),
+    })
+      .then((response) => response.json())
+      .then((data) =>
+        fetch(`https://sf-collective-api.herokuapp.com/comments?post_id=${id}`)
+          .then((response) => response.json())
+          .then((data) => setComments(data))
+      );
+  };
+
   return (
     <div className="post-page">
-      <Navigation navigation={Navigation}></Navigation>
       <div className="post">
         <h2 className="row-1">{post.title}</h2>
         <div className="row-2">
@@ -38,14 +58,10 @@ const PostPage = () => {
       <hr></hr>
       <div className="comments-section">
         {comments.map((comment) => {
-          return <Comment key={comment.id} comment={comment}></Comment>;
+          return <Comment key={comment.id} comment={comment} />;
         })}
       </div>
-      <div className = "new-comment">
-        <input name = "newComment-comment"type = "text" placeholder = "What would you like to say?"></input>
-        <input name = "newComment-author" type = "text" placeholder = "Your name"></input>
-        <button type = "button">Submit Comment</button>
-      </div>
+      <NewComment id={id} createComment={createComment}/>
     </div>
   );
 };

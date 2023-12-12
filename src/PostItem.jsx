@@ -9,7 +9,7 @@ const PostItem = ({ post }) => {
           onClick={() => console.log("POST request to delete post.id")}
           className="inline-obj"
         >
-          <span class="material-symbols-outlined delete-button">delete</span>
+          <span className="material-symbols-outlined delete-button">delete</span>
         </p>
       </div>
       <div className="row-2">
@@ -24,10 +24,10 @@ const PostItem = ({ post }) => {
         </Link>
         <div className="inline-obj endline">
           <p className="inline-obj add-pad">
-            <span class="material-symbols-outlined like">thumb_up</span>#
+            <span className="material-symbols-outlined like">thumb_up</span>#
           </p>
           <p className="inline-obj">
-            <span class="material-symbols-outlined dislike">thumb_down</span>#
+            <span className="material-symbols-outlined dislike">thumb_down</span>#
           </p>
         </div>
       </div>

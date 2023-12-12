@@ -3,14 +3,14 @@ import { Link } from "react-router-dom";
 const Navigation = () => {
   return (
     <div>
-      <h1>React Blog Project</h1>
+      <h1>React Bleg Project</h1>
       <div className="navContainer">
         <p className="inline-obj">
-          <span class="material-symbols-outlined">arrow_back</span>
+          <span className="material-symbols-outlined">arrow_back</span>
         </p>
-        <p className="inline-obj">My Feed</p>
-        <p className="inline-obj">My Posts</p>
-        <p className="inline-obj">New Post</p>
+        <Link to="/" className="inline-obj">My Feed</Link>
+        <p className="inline-obj">Search By Author</p>
+        <Link to="/draft" className="inline-obj">New Post</Link>
       </div>
     </div>
   );

@@ -34,7 +34,7 @@
 
 .delete-button{
   float:inline-end;
-  color: red;
+  color: rgb(201, 91, 91);
   border: 1px solid rgb(0,0,0,0);
   border-radius: 15px;
   padding: 5px;
