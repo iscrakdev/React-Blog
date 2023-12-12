@@ -1,9 +1,10 @@
 import { useState } from "react";
 
 const Draft = () => {
+  const [img_url, setImgUrl] = useState("");
+  const [title, setTitle] = useState("");
   const [author, setAuthor] = useState("");
   const [content, setContent] = useState("");
-  const [title, setTitle] = useState("");
 
   const createPost = (data) => {
     fetch("https://sf-collective-api.herokuapp.com/posts", {
@@ -22,33 +23,60 @@ const Draft = () => {
       <h2>New Post</h2>
       <form>
         <input
-          name="author-input"
+          className="author-img"
+          name="author-img"
           type="text"
-          onChange={(e) => setAuthor(e.target.value)}
-          placeholder="Author Name"
+          onChange={(e) => setImgUrl(e.target.value)}
+          placeholder="Image Url"
         ></input>
+        <br />
         <input
-          name="content-input"
-          type="textarea"
-          onChange={(e) => setContent(e.target.value)}
-          placeholder="Post Content Here..."
-        ></input>
-        <input
+          className="title-input"
           name="title-input"
           type="text"
           onChange={(e) => setTitle(e.target.value)}
           placeholder="Post Title Here..."
         ></input>
+        <br />
+        <input
+          className="author-input"
+          name="author-input"
+          type="text"
+          onChange={(e) => setAuthor(e.target.value)}
+          placeholder="Author Name"
+        ></input>
+        <br />
+        <textarea
+          className="content-input"
+          name="content-input"
+          type="textarea"
+          onChange={(e) => setContent(e.target.value)}
+          placeholder="Post Content Here..."
+        ></textarea>
+        <br />
         <button
+          className="post-button"
           type="submit"
           onClick={(e) => {
             e.preventDefault();
-            const data = {
-              author,
-              content,
-              title,
-            };
-            createPost(data);
+            const post = {};
+            if (content === "") {
+              window.alert("please provide some content for your post");
+              return null;
+            }
+            if (title === "") {
+              window.alert("please provide a title for your post");
+              return null;
+            }
+            if (img_url !== "") {
+              post.img_url = img_url;
+            }
+            if (author === "") {
+              post.author = "anonymous";
+            } else {
+              post.author = author;
+            }
+            createPost(post);
           }}
         >
           Post!

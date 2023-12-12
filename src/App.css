@@ -89,11 +89,16 @@ span:hover{
   display:flex;
   justify-content: space-evenly;
   margin-bottom: 15px;
+  font-size: 14pt;
 }
 .nav-obj{
   text-decoration: none;
-
+  color: grey;
 }
+.nav-obj:hover{
+  color: blue;
+}
+
 
 /* like / dislike */
 .like-dislike-bar{
@@ -202,5 +207,98 @@ span:hover{
 .newComment-submission:hover{
   background-color: teal;
   transition: ease-in-out 0.125s;
+  cursor: pointer;
+}
+
+/* New Posts */
+.Draft{
+  text-align: left;
+  width: 40%;
+  margin-left: 30%;
+}
+.Draft h2{
+  text-align: center;
+}
+.Draft .img-upload{
+  display: inline;
+}
+.Draft .author-img{
+  border: none;
+  border-bottom: 1px solid grey;
+  background-color: whitesmoke;
+  margin-bottom: 10px;
+  font-size: 10pt;
+  height: 22px;
+  padding-left: 5px;
+  width: 40%;
+  color: grey;
+}
+.Draft .author-img::placeholder{
+  color: lightgrey;
+  font-style: italic;
+  font-family: Cambria, Cochin, Georgia, Times, 'Times New Roman', serif;
+  font-size: 12pt;
+}
+
+.Draft .author-input{
+  font-family:Cambria, Cochin, Georgia, Times, 'Times New Roman', serif;
+  color: grey;
+  font-style: italic;
+  font-size: 14pt;
+  border: none;
+  border-bottom: 1px solid grey;
+  background-color: whitesmoke;
+  margin-bottom: 10px;
+  width: 40%;
+}
+.Draft .author-input::placeholder{
+  padding-left: 5px;
+  color: lightgrey;
+  font-size: 12pt;
+}
+.Draft .title-input{
+  font-family:Cambria, Cochin, Georgia, Times, 'Times New Roman', serif;
+  font-size: 14pt;
+  color: black;
+  border: none;
+  border-bottom: 1px solid grey;
+  background-color: whitesmoke;
+  margin-bottom: 10px;
+}
+.Draft .title-input::placeholder{
+  padding-left: 5px;
+  font-style: italic;
+  font-size: 12pt;
+  font-family:Cambria, Cochin, Georgia, Times, 'Times New Roman', serif;
+  color: lightgrey;
+}
+.Draft .content-input{
+  width: 80%;
+  height: 60px;
+  resize: none;
+  font-family:'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+  font-size: 10.5pt;
+  border: none;
+  border-bottom: 1px solid grey;
+  background-color: whitesmoke;
+  margin-bottom: 10px;
+}
+.Draft .content-input::placeholder{
+  padding-left: 5px;
+  font-family:Cambria, Cochin, Georgia, Times, 'Times New Roman', serif;
+  font-style: italic;
+  color: lightgrey;
+}
+.post-button{
+  margin: 0px 0px 0px 46%;
+  background-color:rgb(43, 43, 43);
+  border: none;
+  color: white;
+  padding: 8px;
+  border-radius: 7px;
+}
+.post-button:hover{
+  background-color: teal;
+  transition: ease-in-out 0.25s;
   cursor: pointer;
 }
