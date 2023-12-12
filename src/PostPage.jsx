@@ -9,6 +9,20 @@ const PostPage = () => {
   const [comments, setComments] = useState([]);
   const [refresh, setRefresh] = useState(true);
 
+  const getCurrentVotes = () => (post.votes ? post.votes : 0);
+
+  const changeVotes = (data) => {
+    fetch(`https://sf-collective-api.herokuapp.com/posts/${post.id}`, {
+      method: "PATCH",
+      headers: {
+        "Content-Type": "application/json",
+      },
+      body: JSON.stringify(data),
+    }).then(() => {
+      setRefresh(true);
+    });
+  };
+
   useEffect(() => {
     fetch(`https://sf-collective-api.herokuapp.com/posts/${id}`)
       .then((response) => response.json())
@@ -37,10 +51,38 @@ const PostPage = () => {
     }).then(() => setRefresh(true));
   };
 
+  const deleteComments = (comments) => {
+    for (let comment of comments) {
+      fetch(`https://sf-collective-api.herokuapp.com/comments/${comment.id}`, {
+        method: "DELETE",
+      });
+    }
+  };
+
+  const deletePost = () => {
+    if (window.confirm("Are you sure you want to delete " + post.title)) {
+      fetch(
+        `https://sf-collective-api.herokuapp.com/comments/?post_id=${post.id}`
+      )
+        .then((response) => response.json())
+        .then(deleteComments);
+      fetch(`https://sf-collective-api.herokuapp.com/posts/${post.id}`, {
+        method: "DELETE",
+      }).then(() => {
+        window.location.replace('/')
+      });
+    }
+  };
+
   return (
     <div className="post-page">
       <div className="post">
-        <h2 className="row-1 post-title">{post.title}</h2>
+        <h2 className="row-1 post-title">{post.title} <span
+            className="material-symbols-outlined comment-delete-button"
+            onClick={() => {deletePost()}}
+          >
+            delete
+          </span></h2>
         <div className="row-2">
           <p className="post-author">
             <span>
@@ -50,7 +92,23 @@ const PostPage = () => {
           </p>
         </div>
         <p className="row-3 post-content">{post.content}</p>
-        <p className="row-4"></p>
+        <p className="row-4"><span
+              className="material-symbols-outlined like"
+              onClick={() => {
+                changeVotes({ votes: getCurrentVotes() + 1 });
+              }}
+            >
+              thumb_up
+            </span>
+            {getCurrentVotes()}
+            <span
+              className="material-symbols-outlined dislike"
+              onClick={() => {
+                changeVotes({ votes: getCurrentVotes() - 1 });
+              }}
+            >
+              thumb_down
+            </span></p>
       </div>
       <hr></hr>
       <div className="comments-section">
