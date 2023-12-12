@@ -3,7 +3,19 @@ import { useState } from "react";
 const Draft = () => {
   const [author, setAuthor] = useState("");
   const [content, setContent] = useState("");
-  console.log(author);
+  const [title, setTitle] = useState("");
+
+  const createPost = (data) => {
+    fetch("https://sf-collective-api.herokuapp.com/posts", {
+      method: "POST",
+      headers: {
+        "Content-Type": "application/json",
+      },
+      body: JSON.stringify(data),
+    })
+      .then((response) => response.json())
+      .then((data) => window.location.replace(`/post/${data.id}`));
+  };
 
   return (
     <div className="Draft">
@@ -21,6 +33,26 @@ const Draft = () => {
           onChange={(e) => setContent(e.target.value)}
           placeholder="Post Content Here..."
         ></input>
+        <input
+          name="title-input"
+          type="text"
+          onChange={(e) => setTitle(e.target.value)}
+          placeholder="Post Title Here..."
+        ></input>
+        <button
+          type="submit"
+          onClick={(e) => {
+            e.preventDefault();
+            const data = {
+              author,
+              content,
+              title,
+            };
+            createPost(data);
+          }}
+        >
+          Post!
+        </button>
       </form>
     </div>
   );
