@@ -1,5 +1,6 @@
 import PostList from "./PostList";
 import { useState, useEffect } from "react";
+import Navigation from "./Navigation";
 
 function Feed() {
   const [posts, setPosts] = useState([]);
@@ -13,6 +14,7 @@ function Feed() {
 
   return (
     <div className="Feed">
+      <Navigation navigation={Navigation}></Navigation>
       <PostList posts={posts}></PostList>
     </div>
   );
