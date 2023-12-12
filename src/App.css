@@ -120,6 +120,12 @@ span:hover{
 .dislike{
   margin-left: 5px;
 }
+.is-liked > .like {
+  color: rgb(118, 180, 118);
+}
+.is-disliked > .dislike{
+  color: rgb(238, 103, 103);
+}
 .like:hover{
   background-color: rgb(118, 180, 118);
   color: white;

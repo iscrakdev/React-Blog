@@ -8,6 +8,8 @@ const PostPage = () => {
   const [post, setPost] = useState({});
   const [comments, setComments] = useState([]);
   const [refresh, setRefresh] = useState(true);
+  const [liked, setLiked] = useState(false);
+  const [disliked, setDisliked] = useState(false);
 
   const getCurrentVotes = () => (post.votes ? post.votes : 0);
 
@@ -69,7 +71,7 @@ const PostPage = () => {
       fetch(`https://sf-collective-api.herokuapp.com/posts/${post.id}`, {
         method: "DELETE",
       }).then(() => {
-        window.location.replace('/')
+        window.location.replace("/");
       });
     }
   };
@@ -77,12 +79,17 @@ const PostPage = () => {
   return (
     <div className="post-page">
       <div className="post">
-        <h2 className="row-1 post-title">{post.title} <span
+        <h2 className="row-1 post-title">
+          {post.title}{" "}
+          <span
             className="material-symbols-outlined comment-delete-button"
-            onClick={() => {deletePost()}}
+            onClick={() => {
+              deletePost();
+            }}
           >
             delete
-          </span></h2>
+          </span>
+        </h2>
         <div className="row-2">
           <p className="post-author">
             <span>
@@ -92,23 +99,49 @@ const PostPage = () => {
           </p>
         </div>
         <p className="row-3 post-content">{post.content}</p>
-        <p className="row-4 post-page-likeDislike"><span
-              className="material-symbols-outlined like"
-              onClick={() => {
-                changeVotes({ votes: getCurrentVotes() + 1 });
-              }}
-            >
-              thumb_up
-            </span>
-            {getCurrentVotes()}
-            <span
-              className="material-symbols-outlined dislike"
-              onClick={() => {
+        <p
+          className={`row-4 post-page-likeDislike like-dislike-buttons ${
+            liked ? "is-liked" : ""
+          } ${disliked ? "is-disliked" : ""}`}
+        >
+          <span
+            className="material-symbols-outlined like"
+            onClick={() => {
+              if (liked) {
                 changeVotes({ votes: getCurrentVotes() - 1 });
-              }}
-            >
-              thumb_down
-            </span></p>
+                setLiked(false);
+              } else if (disliked) {
+                changeVotes({ votes: getCurrentVotes() + 2 });
+                setLiked(true);
+                setDisliked(false);
+              } else {
+                changeVotes({ votes: getCurrentVotes() + 1 });
+                setLiked(true);
+              }
+            }}
+          >
+            thumb_up
+          </span>
+          {getCurrentVotes()}
+          <span
+            className="material-symbols-outlined dislike"
+            onClick={() => {
+              if (disliked) {
+                changeVotes({ votes: getCurrentVotes() + 1 });
+                setDisliked(false);
+              } else if (liked) {
+                changeVotes({ votes: getCurrentVotes() - 2 });
+                setLiked(false);
+                setDisliked(true);
+              } else {
+                changeVotes({ votes: getCurrentVotes() - 1 });
+                setDisliked(true);
+              }
+            }}
+          >
+            thumb_down
+          </span>
+        </p>
       </div>
       <hr></hr>
       <div className="comments-section">
