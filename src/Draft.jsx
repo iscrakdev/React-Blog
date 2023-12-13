@@ -1,22 +1,11 @@
 import { useState } from "react";
+import createPost from "./utils/createPost";
 
 const Draft = () => {
   const [img_url, setImgUrl] = useState("");
   const [title, setTitle] = useState("");
   const [author, setAuthor] = useState("");
   const [content, setContent] = useState("");
-
-  const createPost = (data) => {
-    fetch("https://sf-collective-api.herokuapp.com/posts", {
-      method: "POST",
-      headers: {
-        "Content-Type": "application/json",
-      },
-      body: JSON.stringify(data),
-    })
-      .then((response) => response.json())
-      .then((data) => window.location.replace(`/post/${data.id}`));
-  };
 
   return (
     <div className="Draft">
@@ -28,7 +17,7 @@ const Draft = () => {
           type="text"
           onChange={(e) => setImgUrl(e.target.value)}
           placeholder="Image Url"
-        ></input>
+        />
         <br />
         <input
           className="title-input"
@@ -36,7 +25,7 @@ const Draft = () => {
           type="text"
           onChange={(e) => setTitle(e.target.value)}
           placeholder="Post Title Here..."
-        ></input>
+        />
         <br />
         <input
           className="author-input"
@@ -44,7 +33,7 @@ const Draft = () => {
           type="text"
           onChange={(e) => setAuthor(e.target.value)}
           placeholder="Author Name"
-        ></input>
+        />
         <br />
         <textarea
           className="content-input"
@@ -52,34 +41,19 @@ const Draft = () => {
           type="textarea"
           onChange={(e) => setContent(e.target.value)}
           placeholder="Post Content Here..."
-        ></textarea>
+        />
         <br />
         <button
           className="post-button"
           type="submit"
           onClick={(e) => {
             e.preventDefault();
-            const post = {};
-            if (content === "") {
-              window.alert("please provide some content for your post");
-              return null;
-            } else {
-              post.content = content;
-            }
-            if (title === "") {
-              window.alert("please provide a title for your post");
-              return null;
-            } else {
-              post.title = title;
-            }
-            if (img_url !== "") {
-              post.img_url = img_url;
-            }
-            if (author === "") {
-              post.author = "anonymous";
-            } else {
-              post.author = author;
-            }
+            const post = {
+              img_url,
+              title,
+              author,
+              content,
+            };
             createPost(post);
           }}
         >
