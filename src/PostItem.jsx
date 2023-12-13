@@ -1,35 +1,18 @@
 import { Link } from "react-router-dom";
 import LikeDislikeButton from "./LikeDislikeButton";
+import deletePost from "./utils/deletePost";
 
 const PostItem = ({ post, setRefresh }) => {
-  const deleteComments = (comments) => {
-    for (let comment of comments) {
-      fetch(`https://sf-collective-api.herokuapp.com/comments/${comment.id}`, {
-        method: "DELETE",
-      });
-    }
-  };
-
-  const deletePost = () => {
-    if (window.confirm("Are you sure you want to delete " + post.title)) {
-      fetch(
-        `https://sf-collective-api.herokuapp.com/comments/?post_id=${post.id}`
-      )
-        .then((response) => response.json())
-        .then(deleteComments);
-      fetch(`https://sf-collective-api.herokuapp.com/posts/${post.id}`, {
-        method: "DELETE",
-      }).then(() => {
-        setRefresh(true);
-      });
-    }
-  };
-
   return (
     <div className="post-item">
       <div className="row-1">
         <h2 className="inline-obj post-title">{post.title.slice(0, 80)}...</h2>
-        <p onClick={() => deletePost()} className="inline-obj">
+        <p
+          onClick={() => {
+            deletePost(post).then(setRefresh(true));
+          }}
+          className="inline-obj"
+        >
           <span className="material-symbols-outlined delete-button">
             delete
           </span>
@@ -47,7 +30,11 @@ const PostItem = ({ post, setRefresh }) => {
         </Link>
         <div className="inline-obj endline">
           <p className={`inline-obj`}>
-            <LikeDislikeButton type={'posts'} payload={post} setRefresh={setRefresh} />
+            <LikeDislikeButton
+              type={"posts"}
+              payload={post}
+              setRefresh={setRefresh}
+            />
           </p>
         </div>
       </div>
