@@ -1,10 +1,7 @@
 import { Link } from "react-router-dom";
-import { useState } from "react";
+import LikeDislikeButton from "./LikeDislikeButton";
 
 const PostItem = ({ post, setRefresh }) => {
-  const [liked, setLiked] = useState(false);
-  const [disliked, setDisliked] = useState(false);
-
   const deleteComments = (comments) => {
     for (let comment of comments) {
       fetch(`https://sf-collective-api.herokuapp.com/comments/${comment.id}`, {
@@ -28,20 +25,6 @@ const PostItem = ({ post, setRefresh }) => {
     }
   };
 
-  const getCurrentVotes = () => (post.votes ? post.votes : 0);
-
-  const changeVotes = (data) => {
-    fetch(`https://sf-collective-api.herokuapp.com/posts/${post.id}`, {
-      method: "PATCH",
-      headers: {
-        "Content-Type": "application/json",
-      },
-      body: JSON.stringify(data),
-    }).then(() => {
-      setRefresh(true);
-    });
-  };
-
   return (
     <div className="post-item">
       <div className="row-1">
@@ -63,48 +46,8 @@ const PostItem = ({ post, setRefresh }) => {
           Read More...
         </Link>
         <div className="inline-obj endline">
-          <p
-            className={`inline-obj like-dislike-buttons ${
-              liked ? "is-liked" : ""
-            } ${disliked ? "is-disliked" : ""}`}
-          >
-            <span
-              className="material-symbols-outlined like"
-              onClick={() => {
-                if (liked) {
-                  changeVotes({ votes: getCurrentVotes() - 1 });
-                  setLiked(false);
-                } else if (disliked) {
-                  changeVotes({ votes: getCurrentVotes() + 2 });
-                  setLiked(true);
-                  setDisliked(false);
-                } else {
-                  changeVotes({ votes: getCurrentVotes() + 1 });
-                  setLiked(true);
-                }
-              }}
-            >
-              thumb_up
-            </span>
-            {getCurrentVotes()}
-            <span
-              className="material-symbols-outlined dislike"
-              onClick={() => {
-                if (disliked) {
-                  changeVotes({ votes: getCurrentVotes() + 1 });
-                  setDisliked(false);
-                } else if (liked) {
-                  changeVotes({ votes: getCurrentVotes() - 2 });
-                  setLiked(false);
-                  setDisliked(true);
-                } else {
-                  changeVotes({ votes: getCurrentVotes() - 1 });
-                  setDisliked(true);
-                }
-              }}
-            >
-              thumb_down
-            </span>
+          <p className={`inline-obj`}>
+            <LikeDislikeButton type={'posts'} payload={post} setRefresh={setRefresh} />
           </p>
         </div>
       </div>

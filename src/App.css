@@ -6,175 +6,176 @@
   font-size: 15pt;
 }
 
-.inline-obj{
+.inline-obj {
   display: inline;
 }
-.endline{
+.endline {
   float: inline-end;
   transform: translate(0, -6px);
 }
-.row-1{
+.row-1 {
   text-align: left;
 }
-.row-2, .row-3, .row-4{
+.row-2,
+.row-3,
+.row-4 {
   text-align: left;
 }
-.post-list{
+.post-list {
   width: 75%;
   margin-left: 12.5%;
 }
-.post-page{
+.post-page {
   width: 75%;
   margin-left: 12.5%;
 }
-span:hover{
+span:hover {
   cursor: pointer;
 }
 
-
 /* buttons */
-.delete-button{
-  float:inline-end;
+.delete-button {
+  float: inline-end;
   color: rgb(201, 91, 91);
-  border: 1px solid rgb(0,0,0,0);
+  border: 1px solid rgb(0, 0, 0, 0);
   border-radius: 10px;
   padding: 5px;
 }
-.delete-button:hover{
+.delete-button:hover {
   background-color: rgb(238, 103, 103);
   color: white;
   transition: ease-in-out 0.125s;
 }
-.readmore{
+.readmore {
   margin-right: 50%;
   text-decoration: none;
   color: rgb(142, 172, 172);
 }
 
 /* Posts */
-.post-item{
+.post-item {
   margin-bottom: 25px;
   border: 1px solid rgb(185, 185, 185, 0.25);
   padding: 15px;
   border-radius: 10px;
-  box-shadow: 2px 2px 4px rgb(0,0,0,0.1);
+  box-shadow: 2px 2px 4px rgb(0, 0, 0, 0.1);
 }
-.post-img{
+.post-img {
   width: 25px;
   border-radius: 15px;
   display: inline;
   margin-right: 15px;
   transform: translate(0, 3px);
 }
-.post-author{
+.post-author {
   display: inline;
   color: grey;
   font-style: italic;
   font-size: 14pt;
 }
-.post-title{
-  font-family:Cambria, Cochin, Georgia, Times, 'Times New Roman', serif;
+.post-title {
+  font-family: Cambria, Cochin, Georgia, Times, "Times New Roman", serif;
 }
-.post-content{
-  font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+.post-content {
+  font-family: "Segoe UI", Tahoma, Geneva, Verdana, sans-serif;
   margin-left: 15px;
 }
-.post-page-likeDislike{
+.post-page-likeDislike {
   text-align: right;
   transform: translate(0, -5px);
 }
 
 /* navigation */
-.navContainer{
-  display:flex;
+.navContainer {
+  display: flex;
   justify-content: space-evenly;
   margin-bottom: 15px;
   font-size: 14pt;
 }
-.nav-obj{
+.nav-obj {
   text-decoration: none;
   color: grey;
 }
-.nav-obj:hover{
+.nav-obj:hover {
   color: blue;
 }
 
-
 /* like / dislike */
-.like-dislike-bar{
+.like-dislike-bar {
   margin-top: 0;
   transform: translate(0, -15px);
   text-align: right;
   margin-bottom: 0;
 }
-.like, .dislike{
+.like,
+.dislike {
   transform: translate(0, 4px);
-  font-size:  14pt;
+  font-size: 14pt;
   color: grey;
   padding: 4px;
   border-radius: 5px;
 }
-.like{
+.like {
   margin-right: 5px;
 }
-.dislike{
+.dislike {
   margin-left: 5px;
 }
-.is-liked > .like {
+.is-liked .like {
   color: rgb(118, 180, 118);
 }
-.is-disliked > .dislike{
+.is-disliked .dislike {
   color: rgb(238, 103, 103);
 }
-.like:hover{
+.like:hover {
   background-color: rgb(118, 180, 118);
   color: white;
   transition: ease-in-out 0.125s;
 }
-.dislike:hover{
+.dislike:hover {
   background-color: rgb(238, 103, 103);
   color: white;
   transition: ease-in-out 0.125s;
 }
 
 /*  Comments */
-.commentHR{
+.commentHR {
   width: 75%;
 }
-.comment .row-1{
+.comment .row-1 {
   padding-top: 1px;
 }
-.comment{
+.comment {
   height: fit-content;
   width: 75%;
   margin: auto;
-  font-family:'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+  font-family: "Segoe UI", Tahoma, Geneva, Verdana, sans-serif;
   border-radius: 8px;
-  box-shadow: 2px 2px 4px rgb(0,0,0,0.125);
+  box-shadow: 2px 2px 4px rgb(0, 0, 0, 0.125);
   padding-left: 15px;
   padding-right: 15px;
   margin-bottom: 15px;
-  background-color: whitesmoke
+  background-color: whitesmoke;
 }
-.comment-delete-button{
- float: inline-end;
- font-size: 14pt;
+.comment-delete-button {
+  float: inline-end;
+  font-size: 14pt;
   color: rgb(201, 91, 91);
-  border: 1px solid rgb(0,0,0,0);
+  border: 1px solid rgb(0, 0, 0, 0);
   border-radius: 10px;
   padding: 5px;
   transform: translate(0, -3px);
 }
-.comment-delete-button:hover{
+.comment-delete-button:hover {
   background-color: rgb(238, 103, 103);
   color: white;
 }
-.comment-content{
+.comment-content {
   text-align: left;
   font-size: 10.5pt;
   margin-left: 5px;
 }
-.comment-author{
+.comment-author {
   color: grey;
   font-style: italic;
   margin-top: 8px;
@@ -182,10 +183,10 @@ span:hover{
   margin-left: 5px;
 }
 /* Create a new comment */
-.newComment{
+.newComment {
   width: 50%;
 }
-.newComment-comment{
+.newComment-comment {
   width: 50%;
   height: auto;
   resize: none;
@@ -193,42 +194,42 @@ span:hover{
   border: 0.5px solid rgba(24, 24, 24, 0.25);
   border-radius: 5px;
 }
-.newComment-comment::placeholder{
-  font-family:'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+.newComment-comment::placeholder {
+  font-family: "Segoe UI", Tahoma, Geneva, Verdana, sans-serif;
 }
-.newComment-author{
+.newComment-author {
   transform: translate(-164px, 0);
   border: 0.5px solid rgba(24, 24, 24, 0.25);
   border-radius: 5px;
   padding: 2px;
   padding-left: 5px;
 }
-.newComment-submission{
+.newComment-submission {
   border: 0px;
   padding: 7px;
   color: white;
   border-radius: 10px;
   background-color: rgb(43, 43, 43);
 }
-.newComment-submission:hover{
+.newComment-submission:hover {
   background-color: teal;
   transition: ease-in-out 0.125s;
   cursor: pointer;
 }
 
 /* New Posts */
-.Draft{
+.Draft {
   text-align: left;
   width: 40%;
   margin-left: 30%;
 }
-.Draft h2{
+.Draft h2 {
   text-align: center;
 }
-.Draft .img-upload{
+.Draft .img-upload {
   display: inline;
 }
-.Draft .author-img{
+.Draft .author-img {
   border: none;
   border-bottom: 1px solid grey;
   background-color: whitesmoke;
@@ -239,15 +240,15 @@ span:hover{
   width: 40%;
   color: grey;
 }
-.Draft .author-img::placeholder{
+.Draft .author-img::placeholder {
   color: lightgrey;
   font-style: italic;
-  font-family: Cambria, Cochin, Georgia, Times, 'Times New Roman', serif;
+  font-family: Cambria, Cochin, Georgia, Times, "Times New Roman", serif;
   font-size: 12pt;
 }
 
-.Draft .author-input{
-  font-family:Cambria, Cochin, Georgia, Times, 'Times New Roman', serif;
+.Draft .author-input {
+  font-family: Cambria, Cochin, Georgia, Times, "Times New Roman", serif;
   color: grey;
   font-style: italic;
   font-size: 14pt;
@@ -257,13 +258,13 @@ span:hover{
   margin-bottom: 10px;
   width: 40%;
 }
-.Draft .author-input::placeholder{
+.Draft .author-input::placeholder {
   padding-left: 5px;
   color: lightgrey;
   font-size: 12pt;
 }
-.Draft .title-input{
-  font-family:Cambria, Cochin, Georgia, Times, 'Times New Roman', serif;
+.Draft .title-input {
+  font-family: Cambria, Cochin, Georgia, Times, "Times New Roman", serif;
   font-size: 14pt;
   color: black;
   border: none;
@@ -271,39 +272,39 @@ span:hover{
   background-color: whitesmoke;
   margin-bottom: 10px;
 }
-.Draft .title-input::placeholder{
+.Draft .title-input::placeholder {
   padding-left: 5px;
   font-style: italic;
   font-size: 12pt;
-  font-family:Cambria, Cochin, Georgia, Times, 'Times New Roman', serif;
+  font-family: Cambria, Cochin, Georgia, Times, "Times New Roman", serif;
   color: lightgrey;
 }
-.Draft .content-input{
+.Draft .content-input {
   width: 80%;
   height: 60px;
   resize: none;
-  font-family:'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+  font-family: "Segoe UI", Tahoma, Geneva, Verdana, sans-serif;
   font-size: 10.5pt;
   border: none;
   border-bottom: 1px solid grey;
   background-color: whitesmoke;
   margin-bottom: 10px;
 }
-.Draft .content-input::placeholder{
+.Draft .content-input::placeholder {
   padding-left: 5px;
-  font-family:Cambria, Cochin, Georgia, Times, 'Times New Roman', serif;
+  font-family: Cambria, Cochin, Georgia, Times, "Times New Roman", serif;
   font-style: italic;
   color: lightgrey;
 }
-.post-button{
+.post-button {
   margin: 0px 0px 0px 46%;
-  background-color:rgb(43, 43, 43);
+  background-color: rgb(43, 43, 43);
   border: none;
   color: white;
   padding: 8px;
   border-radius: 7px;
 }
-.post-button:hover{
+.post-button:hover {
   background-color: teal;
   transition: ease-in-out 0.25s;
   cursor: pointer;

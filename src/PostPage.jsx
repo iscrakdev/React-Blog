@@ -2,28 +2,13 @@ import { useState, useEffect } from "react";
 import { useParams } from "react-router";
 import Comment from "./Comment";
 import NewComment from "./NewComment";
+import LikeDislikeButton from "./LikeDislikeButton";
 
 const PostPage = () => {
   const { id } = useParams();
   const [post, setPost] = useState({});
   const [comments, setComments] = useState([]);
   const [refresh, setRefresh] = useState(true);
-  const [liked, setLiked] = useState(false);
-  const [disliked, setDisliked] = useState(false);
-
-  const getCurrentVotes = () => (post.votes ? post.votes : 0);
-
-  const changeVotes = (data) => {
-    fetch(`https://sf-collective-api.herokuapp.com/posts/${post.id}`, {
-      method: "PATCH",
-      headers: {
-        "Content-Type": "application/json",
-      },
-      body: JSON.stringify(data),
-    }).then(() => {
-      setRefresh(true);
-    });
-  };
 
   useEffect(() => {
     fetch(`https://sf-collective-api.herokuapp.com/posts/${id}`)
@@ -99,48 +84,8 @@ const PostPage = () => {
           </p>
         </div>
         <p className="row-3 post-content">{post.content}</p>
-        <p
-          className={`row-4 post-page-likeDislike like-dislike-buttons ${
-            liked ? "is-liked" : ""
-          } ${disliked ? "is-disliked" : ""}`}
-        >
-          <span
-            className="material-symbols-outlined like"
-            onClick={() => {
-              if (liked) {
-                changeVotes({ votes: getCurrentVotes() - 1 });
-                setLiked(false);
-              } else if (disliked) {
-                changeVotes({ votes: getCurrentVotes() + 2 });
-                setLiked(true);
-                setDisliked(false);
-              } else {
-                changeVotes({ votes: getCurrentVotes() + 1 });
-                setLiked(true);
-              }
-            }}
-          >
-            thumb_up
-          </span>
-          {getCurrentVotes()}
-          <span
-            className="material-symbols-outlined dislike"
-            onClick={() => {
-              if (disliked) {
-                changeVotes({ votes: getCurrentVotes() + 1 });
-                setDisliked(false);
-              } else if (liked) {
-                changeVotes({ votes: getCurrentVotes() - 2 });
-                setLiked(false);
-                setDisliked(true);
-              } else {
-                changeVotes({ votes: getCurrentVotes() - 1 });
-                setDisliked(true);
-              }
-            }}
-          >
-            thumb_down
-          </span>
+        <p className={`row-4 post-page-likeDislike`}>
+          <LikeDislikeButton type={'posts'} payload={post} setRefresh={setRefresh}/>
         </p>
       </div>
       <hr></hr>
