@@ -21,6 +21,9 @@
 .row-4 {
   text-align: left;
 }
+.row-4{
+  margin-bottom: 10px;
+}
 .post-list {
   width: 75%;
   margin-left: 12.5%;
@@ -47,9 +50,19 @@ span:hover {
   transition: ease-in-out 0.125s;
 }
 .readmore {
-  margin-right: 50%;
   text-decoration: none;
-  color: rgb(142, 172, 172);
+  color: grey;
+  background-color: whitesmoke;
+  padding: 5px;
+  padding-left: 8px;
+  padding-right: 8px;
+  border-radius: 10px;
+  border: 1px solid rgb(0,0,0,0);
+}
+.readmore:hover{
+  background-color:white;
+  border: 1px solid grey;
+  transition: ease-in-out 0.25s;
 }
 
 /* Posts */
@@ -57,6 +70,7 @@ span:hover {
   margin-bottom: 25px;
   border: 1px solid rgb(185, 185, 185, 0.25);
   padding: 15px;
+  padding-left: 25px;
   border-radius: 10px;
   box-shadow: 2px 2px 4px rgb(0, 0, 0, 0.1);
 }
@@ -89,7 +103,7 @@ span:hover {
 .navContainer {
   display: flex;
   justify-content: space-evenly;
-  margin-bottom: 15px;
+  margin-bottom: 25px;
   font-size: 14pt;
 }
 .nav-obj {
@@ -99,6 +113,7 @@ span:hover {
 .nav-obj:hover {
   color: blue;
 }
+
 
 /* like / dislike */
 .like-dislike-bar {
@@ -111,15 +126,17 @@ span:hover {
 .dislike {
   transform: translate(0, 4px);
   font-size: 14pt;
-  color: grey;
+  color: rgb(151, 151, 151);
   padding: 4px;
   border-radius: 5px;
 }
 .like {
   margin-right: 5px;
+  transform: translate(3px, 4px);
 }
 .dislike {
   margin-left: 5px;
+  transform: translate(-3px, 4px);
 }
 .is-liked .like {
   color: rgb(118, 180, 118);
@@ -136,6 +153,17 @@ span:hover {
   background-color: rgb(238, 103, 103);
   color: white;
   transition: ease-in-out 0.125s;
+}
+.like-dislike-buttons{
+  margin-top: 0;
+  margin-bottom: 0;
+  border-radius: 10px;
+}
+.like-counter{
+  color: black;
+  padding: 5px 8px 3px 8px;
+  font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+  font-size: 10pt;
 }
 
 /*  Comments */
@@ -187,7 +215,7 @@ span:hover {
   width: 50%;
 }
 .newComment-comment {
-  width: 50%;
+  width: 500px;
   height: auto;
   resize: none;
   transform: translate(0, 12px);
@@ -196,6 +224,7 @@ span:hover {
 }
 .newComment-comment::placeholder {
   font-family: "Segoe UI", Tahoma, Geneva, Verdana, sans-serif;
+  padding-left: 5px;
 }
 .newComment-author {
   transform: translate(-164px, 0);
@@ -308,4 +337,19 @@ span:hover {
   background-color: teal;
   transition: ease-in-out 0.25s;
   cursor: pointer;
+}
+
+
+/* Post List Items */
+.post-list-title{
+  margin-left: 5px;
+}
+.post-list-author p{
+  margin-left: 15px;
+  margin-top: 10px;
+  margin-bottom: 10px;
+}
+.post-list-content p{
+  margin-top: 5px;
+  margin-bottom: 2%;
 }

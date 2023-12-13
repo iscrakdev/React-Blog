@@ -42,7 +42,9 @@ const LikeDislikeButton = ({ payload, setRefresh, type }) => {
       >
         thumb_up
       </span>
+      <span className = "like-counter">
       {getCurrentVotes()}
+      </span>
       <span
         className="material-symbols-outlined dislike"
         onClick={() => {

@@ -6,7 +6,7 @@ const PostItem = ({ post, setRefresh }) => {
   return (
     <div className="post-item">
       <div className="row-1">
-        <h2 className="inline-obj post-title">{post.title.slice(0, 80)}...</h2>
+        <h2 className="inline-obj post-title post-list-title">{post.title.slice(0, 80)}...</h2>
         <p
           onClick={() => {
             if (
@@ -22,10 +22,10 @@ const PostItem = ({ post, setRefresh }) => {
           </span>
         </p>
       </div>
-      <div className="row-2">
+      <div className="row-2 post-author post-list-author">
         <p>{post.author}</p>
       </div>
-      <div className="row-3">
+      <div className="row-3 post-content post-list-content">
         <p>{post.content.slice(0, 250)}</p>
       </div>
       <div className="row-4">
