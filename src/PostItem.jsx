@@ -9,7 +9,11 @@ const PostItem = ({ post, setRefresh }) => {
         <h2 className="inline-obj post-title">{post.title.slice(0, 80)}...</h2>
         <p
           onClick={() => {
-            deletePost(post).then(setRefresh(true));
+            if (
+              window.confirm("Are you sure you want to delete " + post.title)
+            ) {
+              deletePost(post).then(setRefresh(true));
+            }
           }}
           className="inline-obj"
         >
@@ -29,13 +33,13 @@ const PostItem = ({ post, setRefresh }) => {
           Read More...
         </Link>
         <div className="inline-obj endline">
-          <p className={`inline-obj`}>
+          <div className={`inline-obj`}>
             <LikeDislikeButton
               type={"posts"}
               payload={post}
               setRefresh={setRefresh}
             />
-          </p>
+          </div>
         </div>
       </div>
     </div>

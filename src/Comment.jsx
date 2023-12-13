@@ -1,4 +1,5 @@
 import LikeDislikeButton from "./LikeDislikeButton";
+import deleteComment from "./utils/deleteComment";
 
 const Comment = ({ comment, setRefresh }) => {
   return (
@@ -14,14 +15,7 @@ const Comment = ({ comment, setRefresh }) => {
                   "Are you sure you want to delete " + comment.text
                 )
               ) {
-                fetch(
-                  `https://sf-collective-api.herokuapp.com/comments/${comment.id}`,
-                  {
-                    method: "DELETE",
-                  }
-                ).then(() => {
-                  setRefresh(true);
-                });
+                deleteComment(comment).then(setRefresh(true));
               }
             }}
           >
@@ -31,9 +25,13 @@ const Comment = ({ comment, setRefresh }) => {
       </div>
       <p className="comment-content">{comment.text}</p>
       <div className="inline-obj">
-        <p className={`like-dislike-bar`}>
-          <LikeDislikeButton type={'comments'} payload={comment} setRefresh={setRefresh}/>
-        </p>
+        <div className={`like-dislike-bar`}>
+          <LikeDislikeButton
+            type={"comments"}
+            payload={comment}
+            setRefresh={setRefresh}
+          />
+        </div>
       </div>
     </div>
   );

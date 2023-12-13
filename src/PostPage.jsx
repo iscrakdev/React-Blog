@@ -3,6 +3,7 @@ import { useParams } from "react-router";
 import Comment from "./Comment";
 import NewComment from "./NewComment";
 import LikeDislikeButton from "./LikeDislikeButton";
+import deletePost from "./utils/deletePost";
 
 const PostPage = () => {
   const { id } = useParams();
@@ -38,29 +39,6 @@ const PostPage = () => {
     }).then(() => setRefresh(true));
   };
 
-  const deleteComments = (comments) => {
-    for (let comment of comments) {
-      fetch(`https://sf-collective-api.herokuapp.com/comments/${comment.id}`, {
-        method: "DELETE",
-      });
-    }
-  };
-
-  const deletePost = () => {
-    if (window.confirm("Are you sure you want to delete " + post.title)) {
-      fetch(
-        `https://sf-collective-api.herokuapp.com/comments/?post_id=${post.id}`
-      )
-        .then((response) => response.json())
-        .then(deleteComments);
-      fetch(`https://sf-collective-api.herokuapp.com/posts/${post.id}`, {
-        method: "DELETE",
-      }).then(() => {
-        window.location.replace("/");
-      });
-    }
-  };
-
   return (
     <div className="post-page">
       <div className="post">
@@ -69,7 +47,11 @@ const PostPage = () => {
           <span
             className="material-symbols-outlined comment-delete-button"
             onClick={() => {
-              deletePost();
+              if (
+                window.confirm("Are you sure you want to delete " + post.title)
+              ) {
+                deletePost(post).then(() => window.location.replace("/"));
+              }
             }}
           >
             delete
@@ -84,9 +66,13 @@ const PostPage = () => {
           </p>
         </div>
         <p className="row-3 post-content">{post.content}</p>
-        <p className={`row-4 post-page-likeDislike`}>
-          <LikeDislikeButton type={'posts'} payload={post} setRefresh={setRefresh}/>
-        </p>
+        <div className={`row-4 post-page-likeDislike`}>
+          <LikeDislikeButton
+            type={"posts"}
+            payload={post}
+            setRefresh={setRefresh}
+          />
+        </div>
       </div>
       <hr></hr>
       <div className="comments-section">
